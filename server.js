@@ -9,6 +9,7 @@ const PORT = 1337
 
 // Middleware
 app.use( express.static(__dirname + '/public') )
+app.use( express.json() )
 
 
 // Routes
@@ -34,9 +35,9 @@ app.get('/guestbook', guestbookGet)
 // Fruits: REST API
 app.get('/fruits', fruits.getAll)
 app.get('/fruits/:index', fruits.getOne)
-// post
-// put
-// delete
+app.post('/fruits', fruits.post)
+// put:     /fruits/:index
+// delete:  /fruits/:index
 
 
 

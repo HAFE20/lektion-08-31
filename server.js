@@ -1,6 +1,7 @@
 const express = require('express')
-// require hör till "commonJS"
-// import hör till nyare JS, typ ES2015, "modules"
+// require och module.exports hör till "commonJS"
+// import och export hör till nyare JS, typ ES2015, "modules"
+const guestbookGet = require('./guestbook.js')
 
 const app = express()
 const PORT = 1337
@@ -19,6 +20,10 @@ app.get('/finns-inte.css', (req, res) => {
 	// res.sendStatus(404)
 	res.status(404).send('This resource has moved')
 })
+
+app.get('/guestbook', guestbookGet)
+
+
 
 app.listen(PORT, () => {
 	console.log('Server is listening on port ' + PORT);

@@ -7,13 +7,17 @@ const PORT = 1337
 
 app.get('/', (req, res) => {
 	// console.log('GET / fungerar');
-	// res.send('GET / fungerar!!')
-	res.sendFile(__dirname + '/frontend/index.html')
+	// 200 är standardkoden när vi skickar ett svar
+	res.status(200).sendFile(__dirname + '/frontend/index.html')
 })
 
 app.get('/unicorn.css', (req, res) => {
 	// res.send('One moment, fetching unicorn...')
-	res.sendFile(__dirname + '/frontend/unicorn.css')
+	res.status(200).sendFile(__dirname + '/frontend/unicorn.css')
+})
+app.get('/finns-inte.css', (req, res) => {
+	// res.sendStatus(404)
+	res.status(404).send('This resource has moved')
 })
 
 app.listen(PORT, () => {

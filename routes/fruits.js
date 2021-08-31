@@ -1,11 +1,14 @@
+const express = require('express')
+const router = express.Router()
+
 let data = ['avocado', 'banana', 'orange', 'apple', 'pear', 'another orange']
 
-function getAll(req, res) {
+router.get('/', (req, res) => {
 	console.log('GET /fruits ');
 	res.send(JSON.stringify(data))
-}
+})
 
-function getOne(req, res) {
+router.get('/:index', (req, res) => {
 	//  /fruits/3
 	console.log('GET /fruits/:index');
 	let index = req.params.index
@@ -16,14 +19,14 @@ function getOne(req, res) {
 		res.sendStatus(400)
 		// (man kan skilja på error 400 och 404)
 	}
-}
+})
 
-function post (req, res) {
+router.post('/', (req, res) => {
 	console.log('POST /fruits ', req.body);
 	// TODO: felhantering, kontrollera att req.body är ett rimligt objekt
 	let fruit = req.body.fruit
 	data.push(fruit)
 	res.sendStatus(200)
-}
+})
 
-module.exports = { getAll, getOne, post }
+module.exports = router

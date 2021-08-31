@@ -33,9 +33,7 @@ app.get('/guestbook', guestbookGet)
 
 
 // Fruits: REST API
-app.get('/fruits', fruits.getAll)
-app.get('/fruits/:index', fruits.getOne)
-app.post('/fruits', fruits.post)
+app.use('/fruits', fruits)
 // put:     /fruits/:index
 // delete:  /fruits/:index
 

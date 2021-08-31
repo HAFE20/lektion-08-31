@@ -6,6 +6,12 @@ const guestbookGet = require('./guestbook.js')
 const app = express()
 const PORT = 1337
 
+// Middleware
+app.use( express.static(__dirname + '/public') )
+
+
+// Routes
+// Kommer inte matcha pga express.static
 app.get('/', (req, res) => {
 	// console.log('GET / fungerar');
 	// 200 är standardkoden när vi skickar ett svar

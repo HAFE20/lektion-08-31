@@ -2,6 +2,7 @@ const express = require('express')
 // require och module.exports hör till "commonJS"
 // import och export hör till nyare JS, typ ES2015, "modules"
 const guestbookGet = require('./guestbook.js')
+const fruits = require('./routes/fruits.js')
 
 const app = express()
 const PORT = 1337
@@ -28,6 +29,14 @@ app.get('/finns-inte.css', (req, res) => {
 })
 
 app.get('/guestbook', guestbookGet)
+
+
+// Fruits: REST API
+app.get('/fruits', fruits.getAll)
+app.get('/fruits/:index', fruits.getOne)
+// post
+// put
+// delete
 
 
 
